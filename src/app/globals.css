@@ -9,7 +9,6 @@ body {
   font-size: small;
   background-color: #181a1b;
   color: #e8e6e3;
-  flex-direction: row-reverse;
 }
 
 input[type='file'] {
@@ -159,6 +158,11 @@ button:disabled {
 
 #map canvas {
   cursor: crosshair;
+}
+
+#panel {
+  padding: 2vh;
+  border-left: thin solid whitesmoke;
 }
 
 #float {
