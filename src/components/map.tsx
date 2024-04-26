@@ -1,13 +1,13 @@
 'use client';
 
 import { bbox } from '@turf/turf';
-import { GeoJSONSource, LngLatBoundsLike, Map } from 'maplibre-gl';
+import { GeoJSONSource, LngLatBoundsLike, Map, RasterTileSource } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../module/store';
 
 export default function MapCanvas() {
-  const { geojson } = useContext(AppContext);
+  const { geojson, rasterUrl } = useContext(AppContext);
 
   const [map, setMap] = useState<Map>();
 
@@ -16,6 +16,7 @@ export default function MapCanvas() {
   const style = `https://tiles.stadiamaps.com/styles/alidade_smooth_dark.json?api_key=${keyStadia}`;
 
   const vectorId = 'vector';
+  const rasterId = 'raster';
 
   useEffect(() => {
     const map = new Map({
@@ -51,6 +52,28 @@ export default function MapCanvas() {
       map.fitBounds(bounds, { padding: 5 });
     }
   }, [map, geojson]);
+
+  useEffect(() => {
+    if (map && rasterUrl) {
+      if (map.getSource(rasterId)) {
+        const source = map.getSource(rasterId) as RasterTileSource;
+        source.setTiles([rasterUrl]);
+      } else {
+        map.addSource(rasterId, {
+          type: 'raster',
+          tiles: [rasterUrl],
+          tileSize: 128,
+        });
+        map.addLayer({
+          source: rasterId,
+          id: rasterId,
+          type: 'raster',
+          maxzoom: 22,
+          minzoom: 0,
+        });
+      }
+    }
+  }, [map, rasterUrl]);
 
   return <div id={mapIdId}></div>;
 }

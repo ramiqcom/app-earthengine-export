@@ -41,7 +41,7 @@ function Upload({ formats }: { formats: string[] }) {
           }
         }}
       />
-      {status}
+      <div className='status'>{status}</div>
     </>
   );
 }

@@ -8,6 +8,13 @@ export type Options = Option[];
 export type setString = Dispatch<SetStateAction<string>>;
 export type SetOption = Dispatch<SetStateAction<Option>>;
 
+export type VisObject = {
+  bands?: string[] | string;
+  min: number[] | number;
+  max: number[] | number;
+  palette?: string[] | string;
+};
+
 export type GlobalContext = {
   satellite: Option;
   setSatellite: SetOption;
@@ -24,4 +31,8 @@ export type GlobalContext = {
   setEndDate: setString;
   geojson: FeatureCollection<any>;
   setGeojson: Dispatch<SetStateAction<FeatureCollection<any>>>;
+  rasterUrl: string;
+  setRasterUrl: setString;
+  vis: VisObject;
+  setVis: Dispatch<SetStateAction<VisObject>>;
 };

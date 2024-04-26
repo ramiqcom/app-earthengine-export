@@ -7,7 +7,7 @@ import Panel from '../components/panel';
 import collection from '../data/collection.json';
 import compositeList from '../data/composite.json';
 import { AppContext } from '../module/store';
-import { Option, Options } from '../module/type';
+import { Option, Options, VisObject } from '../module/type';
 import { getDateString } from '../module/util';
 
 export default function App() {
@@ -37,6 +37,12 @@ export default function App() {
   // Geojson data
   const [geojson, setGeojson] = useState<FeatureCollection<any>>();
 
+  // Raster url
+  const [rasterUrl, setRasterUrl] = useState<string>();
+
+  // Visualization parameter
+  const [vis, setVis] = useState<VisObject>();
+
   const states = {
     satellite,
     setSatellite,
@@ -53,6 +59,10 @@ export default function App() {
     setEndDate,
     geojson,
     setGeojson,
+    rasterUrl,
+    setRasterUrl,
+    vis,
+    setVis,
   };
 
   return (
