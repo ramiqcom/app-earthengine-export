@@ -1,0 +1,7 @@
+{
+  "json": "application/json",
+  "geojson": "application/json",
+  "kml": "application/xml",
+  "kmz": "application/xml",
+  "zip": "application/x-compressed-zip"
+}

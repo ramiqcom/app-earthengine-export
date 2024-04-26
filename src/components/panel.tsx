@@ -3,6 +3,7 @@
 import { useContext } from 'react';
 import { AppContext } from '../module/store';
 import { Select } from './input';
+import Region from './roi';
 
 export default function Panel() {
   return (
@@ -10,6 +11,8 @@ export default function Panel() {
       <div className='title'>Earth Engine Data Exporting Application</div>
 
       <Satellite />
+      <Region />
+      <Dates />
       <Composite />
       <Visualization />
     </div>
@@ -27,12 +30,30 @@ function Satellite() {
   );
 }
 
+function Dates() {
+  const { startDate, setStartDate, endDate, setEndDate } = useContext(AppContext);
+
+  return (
+    <div className='flexible vertical small-gap'>
+      <div className='flexible wide'>
+        <div>Start date</div>
+        <div>End date</div>
+      </div>
+
+      <div className='flexible wide'>
+        <input type='date' value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+        <input type='date' value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+      </div>
+    </div>
+  );
+}
+
 function Composite() {
   const { composite, setComposite, composites } = useContext(AppContext);
 
   return (
     <div className='flexible vertical small-gap'>
-      Satellite
+      Composite
       <Select options={composites} value={composite} onChange={(option) => setComposite(option)} />
     </div>
   );
