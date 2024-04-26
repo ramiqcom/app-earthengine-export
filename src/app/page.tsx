@@ -1,11 +1,9 @@
-import MapCanvas from '../components/map';
-import Panel from '../components/panel';
+import App from '../components/app';
 
 export default function Home() {
   return (
     <>
-      <MapCanvas />
-      <Panel />
+      <App />
     </>
   );
 }

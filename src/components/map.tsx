@@ -16,6 +16,7 @@ export default function MapCanvas() {
       center: [119, 0],
       style,
     });
-  });
+  }, []);
+
   return <div id={mapIdId}></div>;
 }

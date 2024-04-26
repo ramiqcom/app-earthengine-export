@@ -1,0 +1,44 @@
+[
+  {
+    "label": "Landsat",
+    "value": "landsat",
+    "property": {
+      "visualization": [
+        "true_color",
+        "standard_false_color",
+        "enhanced_true_color",
+        "agriculture_false_color",
+        "infrared_false_color",
+        "ndvi",
+        "savi",
+        "evi",
+        "ndwi",
+        "mndwi",
+        "ndmi",
+        "nbr",
+        "nbr2"
+      ]
+    }
+  },
+  {
+    "label": "Sentinel-2",
+    "value": "sentinel-2",
+    "property": {
+      "visualization": [
+        "true_color",
+        "standard_false_color",
+        "enhanced_true_color",
+        "agriculture_false_color",
+        "infrared_false_color",
+        "ndvi",
+        "savi",
+        "evi",
+        "ndwi",
+        "mndwi",
+        "ndmi",
+        "nbr",
+        "nbr2"
+      ]
+    }
+  }
+]
