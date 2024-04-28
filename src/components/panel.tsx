@@ -13,6 +13,8 @@ export default function Panel() {
 
   const [status, setStatus] = useState<string>();
 
+  const [previewButtonDisabled, setPreviewButtonDisabled] = useState(false);
+
   return (
     <div id='panel' className='flexible vertical gap'>
       <div className='title'>Earth Engine Data Exporting Application</div>
@@ -24,8 +26,11 @@ export default function Panel() {
       <Visualization />
 
       <button
-        disabled={geojson ? false : true}
+        disabled={(geojson ? false : true) || previewButtonDisabled}
         onClick={async () => {
+          // Disable the button when processing
+          setPreviewButtonDisabled(true);
+
           try {
             setStatus('Processesing...');
             const bounds = bbox(geojson);
@@ -55,6 +60,9 @@ export default function Panel() {
           } catch ({ message }) {
             setStatus(message);
           }
+
+          // Enable the button again
+          setPreviewButtonDisabled(false);
         }}
       >
         Preview image
