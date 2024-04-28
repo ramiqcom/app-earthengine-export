@@ -7,6 +7,7 @@ export type Options = Option[];
 
 export type setString = Dispatch<SetStateAction<string>>;
 export type SetOption = Dispatch<SetStateAction<Option>>;
+export type setBoolean = Dispatch<SetStateAction<boolean>>;
 
 export type VisObject = {
   bands?: string[] | string;

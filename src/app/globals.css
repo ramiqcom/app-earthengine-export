@@ -11,8 +11,13 @@ body {
   color: #e8e6e3;
 }
 
-input[type='file'] {
+input {
   width: 100%;
+  color: #e8e6e3;
+}
+
+input[type='text'] {
+  background-color: #6b6b6b;
 }
 
 datalist {

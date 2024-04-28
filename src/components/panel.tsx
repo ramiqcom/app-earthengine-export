@@ -1,9 +1,10 @@
 'use client';
 
 import { bbox, bboxPolygon } from '@turf/turf';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../module/store';
 import { VisObject } from '../module/type';
+import ExportPanel from './export';
 import { Select } from './input';
 import Region from './roi';
 
@@ -13,7 +14,13 @@ export default function Panel() {
 
   const [status, setStatus] = useState<string>();
 
+  // Preview button disabled
   const [previewButtonDisabled, setPreviewButtonDisabled] = useState(false);
+
+  // Disable the preview button if no geojson
+  useEffect(() => {
+    setPreviewButtonDisabled(geojson ? false : true);
+  }, [geojson]);
 
   return (
     <div id='panel' className='flexible vertical gap'>
@@ -26,7 +33,7 @@ export default function Panel() {
       <Visualization />
 
       <button
-        disabled={(geojson ? false : true) || previewButtonDisabled}
+        disabled={previewButtonDisabled}
         onClick={async () => {
           // Disable the button when processing
           setPreviewButtonDisabled(true);
@@ -67,6 +74,8 @@ export default function Panel() {
       >
         Preview image
       </button>
+
+      <ExportPanel />
       <div className='status'>{status}</div>
     </div>
   );
