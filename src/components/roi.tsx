@@ -90,7 +90,7 @@ function Url({ formats }: { formats: string[] }) {
       >
         Load
       </button>
-      <div className='status'>{urlStatus || undefined}</div>
+      <div className='status'>{urlStatus}</div>
     </>
   );
 }

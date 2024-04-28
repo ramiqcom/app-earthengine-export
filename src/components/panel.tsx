@@ -75,8 +75,9 @@ export default function Panel() {
         Preview image
       </button>
 
-      <ExportPanel />
       <div className='status'>{status}</div>
+
+      <ExportPanel />
     </div>
   );
 }

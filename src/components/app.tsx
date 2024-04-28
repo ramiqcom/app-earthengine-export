@@ -43,6 +43,9 @@ export default function App() {
   // Visualization parameter
   const [vis, setVis] = useState<VisObject>();
 
+  // Max zoom
+  const [maxZoom, setMaxZoom] = useState(16);
+
   const states = {
     satellite,
     setSatellite,
@@ -63,6 +66,8 @@ export default function App() {
     setRasterUrl,
     vis,
     setVis,
+    maxZoom,
+    setMaxZoom,
   };
 
   return (

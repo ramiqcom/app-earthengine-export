@@ -6,6 +6,7 @@ export type Option = { label: string; value: string | number };
 export type Options = Option[];
 
 export type setString = Dispatch<SetStateAction<string>>;
+export type setNumber = Dispatch<SetStateAction<number>>;
 export type SetOption = Dispatch<SetStateAction<Option>>;
 export type setBoolean = Dispatch<SetStateAction<boolean>>;
 
@@ -36,4 +37,6 @@ export type GlobalContext = {
   setRasterUrl: setString;
   vis: VisObject;
   setVis: Dispatch<SetStateAction<VisObject>>;
+  maxZoom: number;
+  setMaxZoom: setNumber;
 };
