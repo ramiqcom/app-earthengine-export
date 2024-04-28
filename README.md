@@ -1,8 +1,24 @@
+# Satellite Imagery Data Exporter
+
+Application to preview satellite imagery using Google Earth Engine and export the data as GeoTIFF or as tile map for web map.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Demo app to use
+
+Cloud run: <https://app-earthengine-export-llkrp5nvaa-ez.a.run.app>
 
 ## Getting Started
 
-First, run the development server:
+First, Clone the repository
+
+Second, run `npm install` to install all dependency
+
+Third, rename `.env.example` file to `.env`
+
+Fourth, in the `.env` file input value in key `NEXT_PUBLIC_STADIA_KEY` for Stadia Map API key and in key `API` to the url for the API endpoint to run the export and view
+
+Fifth, run the development server:
 
 ```bash
 npm run dev
