@@ -37,6 +37,9 @@ export default function App() {
   // Geojson data
   const [geojson, setGeojson] = useState<FeatureCollection<any>>();
 
+  // Geometry geojson
+  const [geojsonBounds, setGeojsonBounds] = useState<FeatureCollection<any>>();
+
   // Raster url
   const [rasterUrl, setRasterUrl] = useState<string>();
 
@@ -68,6 +71,8 @@ export default function App() {
     setVis,
     maxZoom,
     setMaxZoom,
+    geojsonBounds,
+    setGeojsonBounds,
   };
 
   return (

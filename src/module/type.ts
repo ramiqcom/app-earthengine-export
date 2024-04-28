@@ -39,4 +39,6 @@ export type GlobalContext = {
   setVis: Dispatch<SetStateAction<VisObject>>;
   maxZoom: number;
   setMaxZoom: setNumber;
+  geojsonBounds: FeatureCollection<any>;
+  setGeojsonBounds: Dispatch<SetStateAction<FeatureCollection<any>>>;
 };

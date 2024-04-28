@@ -8,10 +8,10 @@ export default function ExportPanel() {
     visualization,
     endDate,
     startDate,
-    geojson,
     composite,
     maxZoom,
     setMaxZoom,
+    geojsonBounds,
   } = useContext(AppContext);
 
   // Bucket and filenameprefix
@@ -53,7 +53,7 @@ export default function ExportPanel() {
               satellite: satellite.value,
               visualization: visualization.value,
               date: [startDate, endDate],
-              geojson,
+              geojson: geojsonBounds,
               composite: composite.value,
               bucket,
               fileNamePrefix,
@@ -115,7 +115,7 @@ export default function ExportPanel() {
               satellite: satellite.value,
               visualization: visualization.value,
               date: [startDate, endDate],
-              geojson,
+              geojson: geojsonBounds,
               composite: composite.value,
               bucket,
               fileNamePrefix,

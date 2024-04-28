@@ -1,13 +1,13 @@
 'use client';
 
-import { bbox } from '@turf/turf';
+import { bbox, bboxPolygon, featureCollection } from '@turf/turf';
 import { GeoJSONSource, LngLatBoundsLike, Map, RasterTileSource } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../module/store';
 
 export default function MapCanvas() {
-  const { geojson, rasterUrl } = useContext(AppContext);
+  const { geojson, rasterUrl, setGeojsonBounds } = useContext(AppContext);
 
   const [map, setMap] = useState<Map>();
 
@@ -48,8 +48,11 @@ export default function MapCanvas() {
           },
         });
       }
-      const bounds = bbox(geojson) as LngLatBoundsLike;
-      map.fitBounds(bounds, { padding: 5 });
+      const bounds = bbox(geojson);
+      map.fitBounds(bounds as LngLatBoundsLike, { padding: 5 });
+
+      // Set geojson bounds
+      setGeojsonBounds(featureCollection([bboxPolygon(bounds)]));
     }
   }, [map, geojson]);
 
