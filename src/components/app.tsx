@@ -9,6 +9,7 @@ import compositeList from '../data/composite.json';
 import { AppContext } from '../module/store';
 import { Option, Options, VisObject } from '../module/type';
 import { getDateString } from '../module/util';
+import Database from './database';
 
 export default function App() {
   // Satellite option state
@@ -78,6 +79,7 @@ export default function App() {
   return (
     <>
       <AppContext.Provider value={states}>
+        <Database />
         <MapCanvas />
         <Panel />
       </AppContext.Provider>
