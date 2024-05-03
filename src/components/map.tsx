@@ -1,5 +1,3 @@
-'use client';
-
 import { bbox, bboxPolygon, featureCollection } from '@turf/turf';
 import { GeoJSONSource, LngLatBoundsLike, Map, RasterTileSource } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';

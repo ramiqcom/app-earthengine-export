@@ -1,5 +1,3 @@
-'use client';
-
 import { bbox, bboxPolygon } from '@turf/turf';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../module/store';
