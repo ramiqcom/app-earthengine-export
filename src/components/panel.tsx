@@ -1,5 +1,6 @@
 import { bbox, bboxPolygon } from '@turf/turf';
 import { useContext, useEffect, useState } from 'react';
+import { viewImage } from '../module/server';
 import { AppContext } from '../module/store';
 import { VisObject } from '../module/type';
 import ExportPanel from './export';
@@ -49,15 +50,7 @@ export default function Panel() {
               geojson: polygon,
             };
 
-            const res = await fetch('/preview', {
-              method: 'POST',
-              body: JSON.stringify(body),
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            });
-
-            const { url, vis }: { url: string; vis: VisObject } = await res.json();
+            const { url, vis }: { url: string; vis: VisObject } = await viewImage(body);
             setRasterUrl(url);
             setVis(vis);
 

@@ -1,5 +1,6 @@
 import { Grid } from 'gridjs-react';
 import { useState } from 'react';
+import { getDatabase } from '../module/server';
 
 export default function Database({ database }: { database: Record<string, any>[] }) {
   const [data, setData] = useState(database);
@@ -44,7 +45,7 @@ export default function Database({ database }: { database: Record<string, any>[]
     >
       <button
         onClick={async () => {
-          const database = await (await fetch('/database')).json();
+          const database = await getDatabase();
           setData(database);
         }}
       >

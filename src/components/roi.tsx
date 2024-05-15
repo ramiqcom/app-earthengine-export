@@ -4,7 +4,6 @@ import loadGeojson from '../module/geodata';
 import { AppContext } from '../module/store';
 
 export default function Region() {
-  const [inputData, setInputData] = useState('upload');
   const formats = Object.keys(formatsData);
 
   return (
@@ -42,55 +41,6 @@ function Upload({ formats }: { formats: string[] }) {
         }}
       />
       <div className='status'>{status}</div>
-    </>
-  );
-}
-
-function Url({ formats }: { formats: string[] }) {
-  const [url, setUrl] = useState<string>();
-  const [urlLoadDisabled, setUrlLoadDisabled] = useState(true);
-  const [urlStatus, setUrlStatus] = useState<string>();
-  const [format, setFormat] = useState<string>();
-
-  return (
-    <>
-      <input
-        type='text'
-        value={url}
-        onChange={(e) => {
-          const url = e.target.value;
-          setUrl(url);
-
-          if (!url) {
-            setUrlStatus('The url is empty');
-            setUrlLoadDisabled(true);
-            return;
-          }
-
-          const fileFormat = url.split('.').at(-1);
-          if (formats.filter((format) => format == fileFormat).length) {
-            setUrlLoadDisabled(false);
-            setFormat(fileFormat);
-          } else {
-            setUrlLoadDisabled(true);
-            setUrlStatus('File format not supported');
-          }
-        }}
-        placeholder='Paste your data url here!'
-      />
-      <button
-        disabled={urlLoadDisabled}
-        onClick={async () => {
-          const res = await fetch('/geodata', {
-            method: 'POST',
-            body: JSON.stringify({ url }),
-            headers: { 'Content-Type': 'application/json' },
-          });
-        }}
-      >
-        Load
-      </button>
-      <div className='status'>{urlStatus}</div>
     </>
   );
 }

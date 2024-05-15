@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { exportGeotiff, exportTile } from '../module/server';
 import { AppContext } from '../module/store';
 
 export default function ExportPanel() {
@@ -59,17 +60,9 @@ export default function ExportPanel() {
               fileNamePrefix,
             };
 
-            const res = await fetch(`/export/geotiff`, {
-              method: 'POST',
-              body: JSON.stringify(body),
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            });
+            const { name, message } = await exportGeotiff(body);
 
-            const { name, message } = await res.json();
-
-            if (!res.ok) {
+            if (message) {
               throw new Error(message);
             }
 
@@ -122,17 +115,9 @@ export default function ExportPanel() {
               maxZoom,
             };
 
-            const res = await fetch(`/export/tile`, {
-              method: 'POST',
-              body: JSON.stringify(body),
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            });
+            const { name, message } = await exportTile(body);
 
-            const { name, message } = await res.json();
-
-            if (!res.ok) {
+            if (message) {
               throw new Error(message);
             }
 
