@@ -11,7 +11,11 @@ import { Option, Options, VisObject } from '../module/type';
 import { getDateString } from '../module/util';
 import Database from './database';
 
-export default function App() {
+export default function App({
+  defaultStates,
+}: {
+  defaultStates: { database: Record<string, any>[] };
+}) {
   // Satellite option state
   const satellites = collection;
   const [satellite, setSatellite] = useState(satellites[0]);
@@ -79,7 +83,7 @@ export default function App() {
   return (
     <>
       <AppContext.Provider value={states}>
-        <Database />
+        <Database database={defaultStates.database} />
         <MapCanvas />
         <Panel />
       </AppContext.Provider>

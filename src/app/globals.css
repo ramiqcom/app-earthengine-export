@@ -183,7 +183,6 @@ button:disabled {
 
 #panel {
   padding: 2vh;
-  border-left: thin solid whitesmoke;
   overflow-y: auto;
 }
 

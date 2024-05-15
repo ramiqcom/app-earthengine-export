@@ -1,4 +1,10 @@
+import { NextResponse } from 'next/server';
+import getDatabase from '../../module/getDatabase';
+
 export async function GET() {
-  const res = await fetch(`${process.env.API}/database`);
-  return res;
+  try {
+    return NextResponse.json(await getDatabase(), { status: 200 });
+  } catch ({ message }) {
+    return NextResponse.json({ message }, { status: 404 });
+  }
 }

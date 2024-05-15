@@ -1,9 +1,10 @@
 import App from '../components/app';
+import getDatabase from '../module/getDatabase';
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
-      <App />
+      <App defaultStates={{ database: await getDatabase() }} />
     </>
   );
 }
