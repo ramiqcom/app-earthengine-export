@@ -42,5 +42,13 @@ export async function getDatabase() {
     return arr;
   });
 
-  return database;
+  const sortDatabase = database
+    .sort((arr1, arr2) => {
+      const date1 = new Date(arr1.operation_started.value).getTime();
+      const date2 = new Date(arr2.operation_started.value).getTime();
+      return date1 - date2;
+    })
+    .reverse();
+
+  return sortDatabase;
 }
